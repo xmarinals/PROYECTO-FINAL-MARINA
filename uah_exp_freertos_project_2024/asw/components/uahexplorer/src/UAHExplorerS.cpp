@@ -102,7 +102,7 @@ bool UAHExplorer::EDROOMIsComponentFinished()
 {
 
 
-	return ( ExplorerManager.EDROOMIsComponentFinished() && TM_ChannelCtrl.EDROOMIsComponentFinished() && HK_FDIRMng.EDROOMIsComponentFinished() && BKGTCExec.EDROOMIsComponentFinished() && CEDROOMComponent::EDROOMIsComponentFinished());
+	return ( ExplorerManager.EDROOMIsComponentFinished() && TM_ChannelCtrl.EDROOMIsComponentFinished() && HK_FDIRMng.EDROOMIsComponentFinished() && BKGTCExec.EDROOMIsComponentFinished() && Guidance.EDROOMIsComponentFinished() && CEDROOMComponent::EDROOMIsComponentFinished());
 
 }
 

@@ -39,6 +39,7 @@ public:
 	 */
 	 enum TEDROOMCCExplorerManagerSignal { EDROOMSignalTimeout, 
 							EDROOMSignalDestroy, 
+							SGuidance, 
 							EDROOMIRQsignal, 
 							SBKGTC, 
 							SHK_FDIR_TC, 
@@ -258,6 +259,7 @@ public:
 	 */
 	enum TEDROOMCCExplorerManagerSignal { EDROOMSignalTimeout,
 		EDROOMSignalDestroy,
+		SGuidance,
 		EDROOMIRQsignal,
 		SBKGTC,
 		SHK_FDIR_TC,
@@ -300,6 +302,7 @@ public:
 			HandleTC_ToReboot,
 			HandleTC_FwdHK_FDIRTC,
 			HandleTC_FwdToBKGTCExec,
+			HandleTC_FwdGuidanceTC,
 			HandleTC_ExecPrioTC,
 			NewEvAction,
 			EDROOMMemoryTrans };
@@ -433,6 +436,16 @@ public:
 		 * \brief  
 		 */
 		bool	GToReboot();
+
+		/**
+		 * \brief 
+		 */
+		bool	GFwdGuidanceTC();
+
+		/**
+		 * \brief 
+		 */
+		void	FFwdGuidanceTC();
 
 	};
 
