@@ -276,7 +276,7 @@ public:
 		/**
 		 * \brief Inicializamos el timer que va a ejecutar el guidance cada 100ms
 		 */
-		void	FInitGuidance()();
+		void	FInitGuidance();
 
 		/**
 		 * \brief  
