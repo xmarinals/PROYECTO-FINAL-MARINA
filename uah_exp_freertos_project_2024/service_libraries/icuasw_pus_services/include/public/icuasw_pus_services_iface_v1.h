@@ -67,7 +67,14 @@ public:
 
 };
 
+class PUS_GuidanceTCExecutor{
 
+public:
+
+	static void ExecTC(CDTCHandler &tc_handler, CDTMList &tm_list,
+			CDEventList &eventList);
+
+};
 
 /*PROTECTED REGION END*/
 

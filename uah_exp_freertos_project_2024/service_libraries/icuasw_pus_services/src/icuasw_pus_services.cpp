@@ -92,4 +92,18 @@ void PUS_BKGTCExecutor::ExecTC(CDTCHandler &tc_handler, CDTMList &tm_list,
 
 }
 
+void PUS_GuidanceTCExecutor::ExecTC(CDTCHandler &tc_handler, CDTMList &tm_list,
+		CDEventList &eventList) {
+	tc_handler.StartUpExecution();
+
+	switch (tc_handler.GetType()) {
+	case (129):
+		PUSService129::ExecTC(tc_handler, tm_list);
+		break;
+	default: //This must be an event
+		break;
+	}
+	tc_handler.FreeTCDescriptor();
+
+}
 
