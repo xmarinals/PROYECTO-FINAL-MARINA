@@ -25,28 +25,77 @@ class UAHExpEmuKinematic PUSService129::mUAHExpEmulator;
 
 void PUSService129::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
-	switch (tcHandler.GetSubType()) {
-
 	//TODO
-
-	default:
-		break;
+	switch (tcHandler.GetSubType()) {
+		case (1):
+			Exec129_1TC(tcHandler,tmList);
+			break;
+		case (2):
+			Exec129_2TC(tcHandler,tmList);
+			break;
+		default:
+			break;
 	}
 
 }
 
 void PUSService129::Exec129_1TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
-
 	//TODO
+	float CVx = tcHandler.GetNextFloat();
+	float CVy = tcHandler.GetNextFloat();
 
+	if((-1 <= CVx) && (CVx <= 1)){
+		if((-1 <= CVy) && (CVy <= 1)){
 
+			// Actualizamos los nuevos CV
+			sCVx = CVx;
+			sCVy = CVy;
+
+			// TC Ejecutado correctamente (TM[1,7])
+			PUSService1::BuildTM_1_7(tcHandler,tmList);
+
+		}else{
+
+			// CVy está fuera de rango así que se envía TM[1,8]
+			//PUSService1::BuildTM_1_8_TC_20_X_PIDNotValid(tcHandler,tmList,CVy);
+		}
+
+	}else{
+
+		// CVx está fuera de rango así que se envía TM[1,8]
+	//	PUSService1::BuildTM_1_8_TC_20_X_PIDNotValid(tcHandler,tmList,CVx);
+	}
 
 }
 
 void PUSService129::Exec129_2TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 	//TODO
+	float Kpx = tcHandler.GetNextFloat();
+	float Kpy = tcHandler.GetNextFloat();
+
+	if((-1 <= Kpx) && (Kpx <= 1)){
+		if((-1 <= Kpy) && (Kpy <= 1)){
+
+			// Actualizamos los nuevos Kp
+			sKpx = Kpx;
+			sKpy = Kpy;
+
+			// TC Ejecutado correctamente (TM[1,7])
+			PUSService1::BuildTM_1_7(tcHandler,tmList);
+
+		}else{
+
+			// Kpy está fuera de rango así que se envía TM[1,8]
+		//PUSService1::BuildTM_1_8_TC_129_X_PIDNotValid(tcHandler,tmList,Kpy);
+		}
+
+	}else{
+
+		// Kpy está fuera de rango así que se envía TM[1,8]
+		//PUSService1::BuildTM_1_8_TC_129_X_PIDNotValid(tcHandler,tmList,Kpx);
+	}
 
 }
 
